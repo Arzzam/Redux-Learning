@@ -15,6 +15,10 @@ const counterReducer = (state = { counter: 0 }, action) => {
   return state;
 };
 
+const defaultReducer = {
+  counter: 0,
+};
+
 const store = createStore(counterReducer);
 
 export default store;
