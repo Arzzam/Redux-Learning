@@ -1,19 +1,30 @@
 import { legacy_createStore as createStore } from "redux";
 
-const counterReducer = (state = { counter: 0 }, action) => {
+const initialState = { counter: 0, showCounterField: true };
+
+const counterReducer = (state = initialState, action) => {
   if (action.type === "increment") {
     return {
-      counter: state.counter + 1,
+      counter: ,
+      showCounterField: state.showCounterField,
     };
   }
   if (action.type === "decrement") {
     return {
       counter: state.counter - 1,
+      showCounterField: state.showCounterField,
     };
   }
   if (action.type === "increaseBy") {
     return {
       counter: state.counter + action.amount,
+      showCounterField: state.showCounterField,
+    };
+  }
+  if (action.type === "toggleCounter") {
+    return {
+      showCounterField: !state.showCounterField,
+      counter: state.counter,
     };
   }
 
