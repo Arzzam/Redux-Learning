@@ -11,13 +11,18 @@ const counterReducer = (state = { counter: 0 }, action) => {
       counter: state.counter - 1,
     };
   }
+  if (action.type === "increaseBy") {
+    return {
+      counter: state.counter + action.amount,
+    };
+  }
 
   return state;
 };
 
-const defaultReducer = {
-  counter: 0,
-};
+// const defaultReducer = {
+//   counter: 0,
+// };
 
 const store = createStore(counterReducer);
 
