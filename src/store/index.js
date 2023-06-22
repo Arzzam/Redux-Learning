@@ -5,7 +5,7 @@ const initialState = { counter: 0, showCounterField: true };
 const counterReducer = (state = initialState, action) => {
   if (action.type === "increment") {
     return {
-      counter: ,
+      counter: state.counter,
       showCounterField: state.showCounterField,
     };
   }
