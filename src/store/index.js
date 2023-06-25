@@ -1,11 +1,31 @@
 import { legacy_createStore as createStore } from "redux";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = { counter: 0, showCounterField: true };
+
+createSlice({
+  name: "counter",
+  initialState,
+  reducers: {
+    increment(state) {
+      state.counter++;
+    },
+    decrement(state) {
+      state.counter--;
+    },
+    increaseBy(state, action) {
+      state.counter = state.counter + action.value;
+    },
+    toggleCounter(state) {
+      state.showCounterField = !state.showCounterField;
+    },
+  },
+});
 
 const counterReducer = (state = initialState, action) => {
   if (action.type === "increment") {
     return {
-      counter: state.counter,
+      counter: state.counter + 1,
       showCounterField: state.showCounterField,
     };
   }
@@ -17,7 +37,7 @@ const counterReducer = (state = initialState, action) => {
   }
   if (action.type === "increaseBy") {
     return {
-      counter: state.counter + action.amount,
+      counter: state.counter + action.value,
       showCounterField: state.showCounterField,
     };
   }
